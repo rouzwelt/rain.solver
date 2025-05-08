@@ -14,7 +14,7 @@ workers:
     registry: rainprotocol
     registry_type: DOCKER_HUB
     repository: arb-bot
-    tag: master
+    tag: 2025-05-prod-automation-poc
   instance_count: 1
   instance_size_slug: apps-s-1vcpu-0.5gb
   name: flare-bot-test-poc
