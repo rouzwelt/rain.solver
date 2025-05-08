@@ -40,7 +40,8 @@ jobs:
           RPC_URL: ${{ secrets[env.rpc] }}
         run: |
           # Use envsubst to replace secrets in spec.yaml
-          envsubst -i deployments/${{ inputs.deployment }}/specs.yaml -o spec.yaml
+          envsubst --help
+          envsubst deployments/${{ inputs.deployment }}/specs.yaml -o spec.yaml
           
           # Deploy
           nix develop -c doctl apps create -t ${{ secrets.DOCTL_API_KEY }} --spec spec.yaml -o json > result.json
