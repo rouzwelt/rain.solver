@@ -32,9 +32,9 @@ jobs:
 
       - name: Deploy New ${{ inputs.deployment }} Worker
         env:
+          RPC_URL: ${{ secrets[env.rpc] }}
           HYPERDX_API_KEY: ${{ secrets.HYPERDX_API_KEY }}
           PROD_WALLET_KEY: ${{ secrets.PROD_WALLET_KEY }}
-          RPC_URL: ${{ secrets[env.rpc] }}
         run: |
           # Use envsubst to replace secrets in spec.yaml
           nix develop -c envsubst -i deployments/${{ inputs.deployment }}/specs.yaml -o spec.yaml
