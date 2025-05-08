@@ -25,12 +25,8 @@ jobs:
           submodules: recursive
           fetch-depth: 0
       
-      - name: Install Nix 1/2
-        uses: DeterminateSystems/nix-installer-action@main
-        with:
-          determinate: true
-      - name: Install Nix 2/2
-        uses: DeterminateSystems/flakehub-cache-action@main
+      - uses: DeterminateSystems/nix-installer-action@v4
+      - uses: DeterminateSystems/magic-nix-cache-action@v2
 
       - name: Rebuild ${{ inputs.deployment }} Worker
         run: nix develop -c doctl apps create-deployment $(cat deployments/${{ inputs.deployment }}/id.txt) -t ${{ secrets.DOCTL_API_KEY }} --force-rebuild
