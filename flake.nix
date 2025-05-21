@@ -19,6 +19,7 @@
             rainix.sol-build-inputs.${system}
             pkgsnix.doctl
             pkgsnix.envsubst
+            pkgs.jq
           ];
         };
     }
